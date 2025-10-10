@@ -131,9 +131,13 @@ img{
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: rgba(31, 30, 30, );
+    background-color: rgba(31, 30, 30);
     overflow: hidden;
 
+}
+
+#header .nav-list ul.active {
+    left: 0%;
 }
 
 /* this is to explain when the active class is added in javascript */
@@ -176,6 +180,67 @@ img{
 }
 
 /* hamburger code start here */
+#header .hamburger{
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100%;
+    cursor: pointer;
+    transform: scale(0.8);
+}
+
+#header .hamburger::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    border: 3px solid white;
+    animation: hamburger_plus 1s ease infinite;
+
+}
+
+#header .hamburger .bar{
+    height: 2px;
+    width: 30px;
+    background-color: white;
+    position: relative;
+    z-index: -1;
+}
+
+#header .hamburger .bar::after,
+#header .hamburger .bar::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    left: 0;
+}
+
+#header .hamburger .bar::after{
+    top: 8px;
+}
+
+#header .hamburger .bar::before{
+    bottom: 8px;
+}
+
+#header .hamburger.active .bar::after{
+    bottom: 0;
+    display: none;
+}
+
+#header .hamburger.active .bar::before{
+    top: 0;
+    display: none;
+}
 
 
 
@@ -486,6 +551,107 @@ img{
     font-size: 2rem;
 }
 
+/* contact section start here  */
+
+#contact .contact{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 98%;
+}
+
+#contact .contact-items{
+    width: 100%;
+}
+
+#contact .contact-item{
+  width: 80px;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+box-shadow: 0px 0px 18px 0px #747474;
+}
+
+#contact .contact-item:hover{
+    box-shadow: 0px 0px 5px 0px ;
+}
+
+#contact .icon{
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+#contact .contact-info h1{
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+#contact .contact-info h2{
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 500;
+}
+
+#footer .footer{
+    background-color: #485563;
+}
+
+#footer .footer{
+    min-height: 200px;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+
+#footer h2{
+    color: white;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+    margin: 10px 10px;
+}
+
+#footer .footer .social-icon{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+#footer .social-item{
+    height: 40px;
+    width: 40px;
+    margin: 10px 15px;
+}
+
+
+#footer .social-item img{
+    filter: grayscale(1);
+    transition: 0.3s ease filter;
+}
+
+#footer .social-item img:hover{
+    filter: grayscale(0);
+}
+
+#footer p{
+    color: white;
+    font-size: 1.8rem;
+}
+
+/* footer section ends here */
+
+
+
+
+
+
+
 /* keyframes */
 
 @keyframes text_reveal_box{
@@ -513,6 +679,19 @@ img{
         color: crimson;
     }
 }
+
+@keyframes hamburger_plus{
+    0%{
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100%{
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
 
 
 @media only screen and (min-width: 768px) {
@@ -572,7 +751,7 @@ img{
   #contact .contact-item {
     width: 30%;
     margin: 0;
-    flex-direction: row;
+    /* flex-direction: row; */
   }
 
   #contact .contact-item .icon {
